@@ -1,14 +1,18 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from "typeorm";
+import { Role } from "./role.entity";
 @Entity({name: "tb_user"})
 export class User{
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn('uuid')
+    id: string;
 
     @Column()
-    user_name: string;
+    username: string;
     
     @Column()
     password: string;
+
+    @Column()
+    email: string;
 
     @Column()
     refresh_token: string;
@@ -17,5 +21,12 @@ export class User{
     is_active: boolean;
     
     @Column()
-    time_password_expired: Date
+    time_password_expired: Date;
+
+    @ManyToMany(() => Role)
+    @JoinTable({name: "tb_user_role", 
+    joinColumn: {name: "userId", referencedColumnName: "id"}, 
+    inverseJoinColumn:{name: "roleId", referencedColumnName: "id"},
+    })
+    roles: Role[]
 }
