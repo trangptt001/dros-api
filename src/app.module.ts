@@ -5,8 +5,9 @@ import { AppService } from './app.service';
 import { Role } from './entity/role.entity';
 import { User } from './entity/user.entity';
 import { Vehicle } from './entity/vehicle.entity';
-import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
+import { AuthModule } from './module/auth/auth.module';
+import { UserModule } from './module/user/user.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -18,7 +19,10 @@ import { UserModule } from './user/user.module';
     database: 'dros_honda',
     entities: [User, Vehicle, Role],
     synchronize: true,
-  }), AuthModule, UserModule,],
+  }), 
+  AuthModule, 
+  UserModule,
+  ConfigModule.forRoot()],
   controllers: [AppController],
   providers: [AppService],
 })

@@ -1,6 +1,6 @@
 import { ArgumentMetadata, BadRequestException, Injectable, PipeTransform } from '@nestjs/common';
 import { ObjectSchema } from 'joi';
-import { ErrorResponse } from '../class/error-response';
+import { ErrorResponse } from '../shared/class/error-response';
 
 @Injectable()
 export class ValidationPipe implements PipeTransform {

@@ -15,6 +15,9 @@ export class User{
     email: string;
 
     @Column()
+    phonenumber: string;
+
+    @Column()
     refresh_token: string;
 
     @Column({default: true})
