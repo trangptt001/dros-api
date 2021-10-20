@@ -11,14 +11,28 @@ export class CreateUserDto {
     email: string;
 
     @IsPhoneNumber()
-    phonenumber;
+    phonenumber: string;
 
     @IsArray()
-    roles;
+    roles: string[];
 }
+
+export class SignInDto {
+    username: string;
+    password: string;
+}
+
+export class LoginResponseDto {
+    access_token: string;
+    refresh_token: string;
+    constructor(access_token: string, refresh_token: string){
+        this.access_token = access_token;
+        this.refresh_token = refresh_token;
+    }
+}
+
 
 export class CreateUserResponseDto extends CreateUserDto {
     access_token: string;
-
     refresh_token: string;
 }
