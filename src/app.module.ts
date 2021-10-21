@@ -9,23 +9,26 @@ import { AuthModule } from './module/auth/auth.module';
 import { UserModule } from './module/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
+import { UserRole } from './entity/userrole.entity';
 
 @Module({
-  imports: [TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: '',
-    database: 'dros_honda',
-    entities: [User, Vehicle, Role],
-    synchronize: true,
-  }), 
-  AuthModule, 
-  UserModule,
-  ConfigModule.forRoot({
-    load: [configuration]
-  })],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3307,
+      username: 'root',
+      password: '',
+      database: 'dros_honda',
+      entities: [User, Vehicle, Role, UserRole],
+      synchronize: true,
+    }),
+    AuthModule,
+    UserModule,
+    ConfigModule.forRoot({
+      load: [configuration],
+    }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

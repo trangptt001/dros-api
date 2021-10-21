@@ -6,10 +6,12 @@ declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe({
-    whitelist: true,
-    transform: true, //auto transform javascript object to DTO object global
-  }))
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      transform: true, //auto transform javascript object to DTO object global
+    }),
+  );
 
   const config = new DocumentBuilder()
     .setTitle('Cats example')
@@ -27,6 +29,5 @@ async function bootstrap() {
     module.hot.accept();
     module.hot.dispose(() => app.close());
   }
-
 }
 bootstrap();
