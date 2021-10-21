@@ -8,6 +8,7 @@ import { Vehicle } from './entity/vehicle.entity';
 import { AuthModule } from './module/auth/auth.module';
 import { UserModule } from './module/user/user.module';
 import { ConfigModule } from '@nestjs/config';
+import configuration from './config/configuration';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -22,7 +23,9 @@ import { ConfigModule } from '@nestjs/config';
   }), 
   AuthModule, 
   UserModule,
-  ConfigModule.forRoot()],
+  ConfigModule.forRoot({
+    load: [configuration]
+  })],
   controllers: [AppController],
   providers: [AppService],
 })
