@@ -8,7 +8,6 @@ export class UpdateRole1634496134526 implements MigrationInterface {
             name: "role_name",
             type: "nvarchar"
         }));
-        await queryRunner.dropTable("tb_vehicle")
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

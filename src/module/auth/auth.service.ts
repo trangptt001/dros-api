@@ -60,17 +60,17 @@ export class AuthService {
       const hash = await bcrypt.hash(model.password, saltOrRounds);
       const today = new Date();
 
-      const result = this.user.createOne({
-        ...model,
-        password: hash,
-        refresh_token: this.jwt.sign(model, { secret: '22222222' }),
-        is_active: true,
-        time_password_expired: new Date(
-          today.getTime() + 2 * 24 * 60 * 60 * 1000,
-        ),
-        id: '',
-      });
-      return { result };
+      // const result = this.user.createOne({
+      //   ...model,
+      //   password: hash,
+      //   refresh_token: this.jwt.sign(model, { secret: '22222222' }),
+      //   is_active: true,
+      //   time_password_expired: new Date(
+      //     today.getTime() + 2 * 24 * 60 * 60 * 1000,
+      //   ),
+      //   id: '',
+      // });
+      // return { result };
     } catch (error) {
       throw error;
     }

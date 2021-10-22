@@ -1,18 +1,15 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
-@Entity({name: "tb_user_role"})
-export class UserRole{
-    @Column()
-    role_id: string;
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+@Entity({ name: 'tb_user_role' })
+export class UserRole {
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
-    @Column()
-    user_id: string;
+  @Column({ type: 'bit' })
+  active: boolean;
 
-    @Column({type: "bit"})
-    active: boolean;
+  @Column()
+  created_date: Date;
 
-    @Column()
-    created_date: Date;
-
-    @Column()
-    updated_date: Date;
+  @Column()
+  updated_date: Date;
 }
