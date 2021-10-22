@@ -2,12 +2,21 @@ import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity({name: "tb_role"})
 export class Role {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @PrimaryGeneratedColumn("increment")
+    id: number;
 
     @Column()
-    role_code: string;
+    code: string;
 
     @Column()
-    role_name: string;
+    name: string;
+
+    @Column()
+    dros_role: string;
+
+    @Column()
+    created_date: Date;
+
+    @Column()
+    updated_date: Date;
 }
